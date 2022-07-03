@@ -3,6 +3,7 @@ package pl.coderslab.charity.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -22,7 +23,6 @@ public class Donation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
     @Column(nullable = false)
     private Integer quantity;
 
@@ -33,27 +33,25 @@ public class Donation {
     @JoinColumn(name = "institution_id")
     private Institution institution;
 
-    @NotBlank
     @Column(nullable = false)
     private String street;
 
-    @NotBlank
     @Column(nullable = false)
     private String city;
 
-    @NotBlank
     @Column(nullable = false)
     private String zipCode;
 
-    @NotNull
     @Column(nullable = false)
+    private String phone;
+
+    @Column(nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
 
-    @NotNull
     @Column(nullable = false)
     private LocalTime pickUpTime;
 
-    @NotBlank
     @Column(nullable = false)
     private String pickUpComment;
 
